@@ -9,7 +9,7 @@ const router = express.Router();
 router.get('/home', authMiddleware, async (req, res) => {
 
     const userFiles = await fileModel.find({ user: req.user.userId })
-    res.render("home", {
+    res.render("./views/home", {
         files: userFiles,
         user: req.user.username
     })
@@ -25,7 +25,7 @@ router.post('/upload-file', authMiddleware, upload.single('file'), async (req, r
             user: req.user.userId
         });
 
-        return res.status(200).redirect('/home');
+        return res.status(200).redirect('./views/home');
     } catch (error) {
         console.error("Error uploading file:", error); // Logs the exact error
         return res.status(500).json({ message: "File upload failed", error });

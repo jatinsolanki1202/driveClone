@@ -58,7 +58,7 @@ router.post('/login', async (req, res) => {
 
     let user = await userModel.findOne({ email })
     if (!user) {
-        return res.status(403).send("Invalid username or password")
+        return res.status(403).redirect("/user/register")
     }
 
     bcrypt.compare(password, user.password, function (err, result) {

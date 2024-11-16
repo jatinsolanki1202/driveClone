@@ -1,7 +1,7 @@
 import multer from 'multer'
 import firebaseStorage from 'multer-firebase-storage'
 import firebase from './firebase.config.js'
-import serviceAccount from '../drive-572ed-firebase-adminsdk-vzcmx-d37ea92f73.json' assert { type: 'json' }
+import serviceAccount from '../drive-572ed-firebase-adminsdk-vzcmx-742035eccb.json' assert { type: 'json' }
 
 const storage = firebaseStorage({
     credentials: firebase.credential.cert(serviceAccount),
