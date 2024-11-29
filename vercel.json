@@ -6,6 +6,5 @@
       "src": "/(.*)",
       "dest": "/"
     }
-  ],
-  "includeFiles": ["views/**/*"]
+  ]
 }
