@@ -7,13 +7,18 @@ import firebase from '../config/firebase.config.js'
 const router = express.Router();
 
 router.get('/', authMiddleware, async (req, res) => {
+    try {
+        if (!req.user) return res.redirect('/user/login');
+        const userFiles = await fileModel.find({ user: req.user.userId })
+        res.render("../views/index", {
+            files: userFiles,
+            user: req.user.username
+        })
 
-    const userFiles = await fileModel.find({ user: req.user.userId })
-    res.render("../views/index", {
-        files: userFiles,
-        user: req.user.username
-    })
-
+    } catch (error) {
+        console.error("Error loading files:", error);
+        return res.status(500).send("Internal Server Error");
+    }
 })
 
 router.post('/upload-file', authMiddleware, upload.single('file'), async (req, res) => {
