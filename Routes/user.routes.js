@@ -41,7 +41,7 @@ router.post('/register',
 
             const token = jwt.sign({ userId: newUser._id, email: newUser.email, username: newUser.username }, process.env.JWT_SECRET_KEY)
             res.cookie("token", token);
-            return res.status(200).redirect("/home")
+            return res.status(200).redirect("/")
 
         } catch (err) {
             console.error(err)
@@ -66,7 +66,7 @@ router.post('/login', async (req, res) => {
 
         const token = jwt.sign({ userId: user._id, email: user.email, username: user.username }, process.env.JWT_SECRET_KEY)
         res.cookie("token", token);
-        return res.status(200).redirect("/home")
+        return res.status(200).redirect("/")
     });
 })
 

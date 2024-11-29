@@ -1,5 +1,6 @@
+import fs from 'fs'
 import Firebase from 'firebase-admin'
-import serviceAccount from '../drive-572ed-firebase-adminsdk-vzcmx-742035eccb.json' assert { type: 'json' }
+const serviceAccount = JSON.parse(fs.readFileSync('./drive-572ed-firebase-adminsdk-vzcmx-fe579d2698.json'));
 
 const firebase = Firebase.initializeApp({
     credential: Firebase.credential.cert(serviceAccount),
