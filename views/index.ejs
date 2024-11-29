@@ -111,7 +111,11 @@
           class="eachFile flex bg-gray-400 rounded px-5 py-2 justify-between"
         >
           <h2><%= file.originalName %></h2>
-          <a href="/download/<%= file.path %>" target="_blank">
+          <a
+            href="/download/<%= file.path %>"
+            target="_blank"
+            class="px-2 py-1 bg-zinc-500 rounded-full"
+          >
             <i class="ri-download-line"></i>
           </a>
         </div>
