@@ -83,11 +83,13 @@
                 type="file"
                 class="hidden"
                 name="file"
+                onchange="toggleUploadButton()"
               />
             </label>
           </div>
           <button
-            class="bg-green-500 hover:bg-green-700 text-white rounded px-5 py-2"
+            id="uploadBtn"
+            class="hidden bg-green-500 text-white rounded px-5 py-2"
           >
             Upload file
           </button>
@@ -131,6 +133,18 @@
 
       function hidePopUp() {
         document.querySelector(".popup").classList.replace("flex", "hidden");
+      }
+
+      function toggleUploadButton() {
+        const uploadBtn = document.querySelector("#uploadBtn");
+        const fileInput = document.querySelector("#dropzone-file");
+
+        // Disable button if no file is selected
+        if (fileInput.files.length > 0) {
+          uploadBtn.classList.replace("hidden", "block");
+        } else {
+          uploadBtn.classList.replace("block", "hidden");
+        }
       }
     </script>
   </body>

@@ -58,11 +58,11 @@ router.post('/login', async (req, res) => {
 
     let user = await userModel.findOne({ email })
     if (!user) {
-        return res.status(403).redirect("/user/register")
+        return res.render('../views/loginUser', { message: 'Invalid email or password' });
     }
 
     bcrypt.compare(password, user.password, function (err, result) {
-        if (!result) return res.status(403).send("Invalid username or password");
+        if (!result) return res.render('../views/loginUser', { message: 'Invalid email or password' });
 
         const token = jwt.sign({ userId: user._id, email: user.email, username: user.username }, process.env.JWT_SECRET_KEY)
         res.cookie("token", token);
